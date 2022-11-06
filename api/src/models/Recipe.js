@@ -9,7 +9,6 @@ module.exports = (sequelize) => {
       id: {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
-        allowNull: false,
         primaryKey: true,
       },
       name: {
@@ -22,16 +21,12 @@ module.exports = (sequelize) => {
       },
       healthScore: {
         type: DataTypes.FLOAT,
-        allowNull: true,
       },
       steps: {
-        type: DataTypes.ARRAY(DataTypes.TEXT),
-        allowNull: true,
+        type: DataTypes.ARRAY(DataTypes.STRING),
       },
-      createdInDb: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
-        defaultValue: true,
+      image: {
+        type: DataTypes.STRING,
       },
     },
     {
