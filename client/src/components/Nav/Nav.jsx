@@ -12,7 +12,7 @@ export default function Nav() {
           <NavLink to={"/recipes"}>Recipes</NavLink>
         </li>
         <li>
-          <NavLink to={"/recipecreator"}>Create Recipes</NavLink>
+          <NavLink to={"/create"}>Create Recipes</NavLink>
         </li>
       </ul>
     </nav>

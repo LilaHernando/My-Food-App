@@ -1,10 +1,9 @@
 import React from "react";
 import "./App.css";
-import Nav from "./react/components/Nav/Nav";
-import RecipeCard from "./react/components/RecipeCard/RecipeCard";
-import RecipeDetail from "./react/components/RecipeDetail/RecipeDetail";
-import CreateRecipe from "./react/components/CreateRecipe/CreateRecipe";
-
+import Nav from "./components/Nav/Nav";
+import RecipeCard from "./components/RecipeCard/RecipeCard";
+import RecipeDetail from "./components/RecipeDetail/RecipeDetail";
+import CreateRecipe from "./components/CreateRecipe/CreateRecipe";
 import { Route } from "react-router-dom";
 
 function App() {
@@ -13,7 +12,7 @@ function App() {
       <Route path={"/"} component={Nav} />
       <Route exact path={"/recipes"} component={RecipeCard} />
       <Route path={"/recipes/:id"} component={RecipeDetail} />
-      <Route path={"/recipecreator"} component={CreateRecipe} />
+      <Route path={"/create"} component={CreateRecipe} />
     </div>
   );
 }
