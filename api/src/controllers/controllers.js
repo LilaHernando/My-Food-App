@@ -1,9 +1,60 @@
 require("dotenv").config();
+
 const axios = require("axios");
 const { v4: uuidv4 } = require("uuid");
-const { Diet, Recipe } = require("../db");
+const { Diet, Recipe, Recipe_Diet } = require("../db");
 const { API_KEY } = process.env;
 
+async function createRecipe(req, res) {
+  let { name, summary, diets, healthScore, image, steps } = req.body;
+
+  let recipeCreated = await Recipe.create({
+    id: uuidv4(),
+    name,
+    summary,
+    healthScore,
+    steps,
+    image: image
+      ? image
+      : "https://d320djwtwnl5uo.cloudfront.net/recetas/cover/lengu_ZD3bVmkQ8iTdnfGLw41PSOheWt0sHB.png",
+  });
+  let typeDietDb = await Diet.findAll({
+    where: { name: diets },
+  });
+
+  recipeCreated.addDiet(typeDietDb);
+  res.send("type of diet created!");
+}
+//------------------------------------------------------------------------------------------------------------
+const getRecipeById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    if (id.includes("-")) {
+      const dbData = await Recipe.findOne({
+        where: { id },
+        include: Diet,
+      });
+      res.json(dbData);
+    } else {
+      let apiData = await axios.get(
+        `https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY}`
+      );
+      const { title, image, summary, healthScore, diets } = apiData.data;
+
+      apiData = {
+        name: title,
+        image: image,
+        summary: summary.replace(/<[^>]*>?/g, ""),
+        healthScore: healthScore,
+        diets: diets,
+      };
+      res.json(apiData);
+    }
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+//------------------------------------------------------------------------------------------------------------
 const getAllRecipes = async (req, res) => {
   try {
     const { name } = req.query;
@@ -16,7 +67,7 @@ const getAllRecipes = async (req, res) => {
           id: r.id,
           name: r.title,
           image: r.image,
-          diet: r.diets,
+          diets: r.diets,
         };
       });
       const dbData = await Recipe.findAll({
@@ -50,99 +101,34 @@ const getAllRecipes = async (req, res) => {
     res.status(404).json({ message: error.message });
   }
 };
-//-----------------------------------------------------------------------------------------------------------------------
-const getRecipeById = async (req, res) => {
-  try {
-    const { id } = req.params;
-    if (id.includes("-")) {
-      const dbData = await Recipe.findOne({
-        where: { id },
-        include: Diet,
-      });
-      res.json(dbData);
-    } else {
-      let apiData = await axios.get(
-        `https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY}`
-      );
-      const { title, image, summary, healthScore, diets } = apiData.data;
-
-      apiData = {
-        name: title,
-        image: image,
-        summary: summary.replace(/<[^>]*>?/g, ""),
-        healthScore: healthScore,
-        diet: diets,
-      };
-      res.json(apiData);
-    }
-  } catch (error) {
-    res.status(404).json({ message: error.message });
-  }
-};
-//-----------------------------------------------------------------------------------------------------------------------
-const createRecipe = async (req, res) => {
-  try {
-    const { name, image, summary, steps, healthScore, diet } = req.body;
-
-    let newRecipe = await Recipe.create(
-      {
-        name,
-        image,
-        summary,
-        steps,
-        healthScore,
-      },
-      {
-        include: { model: Diet },
-      }
-    );
-
-    const allDiets = [];
-    for (let i = 0; i < diet.length; i++) {
-      let matchDiet = await Diet.findOne({ where: { name: diet[i] } });
-      allDiets.push(matchDiet);
-    }
-    await newRecipe.addDiets(allDiets);
-    newRecipe = await Recipe.findOne({
-      where: { name },
-      include: Diet,
-    });
-    res.status(201).json(newRecipe);
-  } catch (error) {
-    res.status(404).json({ message: error.message });
-  }
-};
-//-----------------------------------------------------------------------------------------------------------------------
-
+//-----------------------------------------------------------------------------------------------------------
+let allDiets = [
+  { name: "gluten free" },
+  { name: "dairy free" },
+  { name: "lacto ovo vegetarian" },
+  { name: "vegan" },
+  { name: "paleolithic" },
+  { name: "primal" },
+  { name: "pescatarian" },
+  { name: "fodmap friendly" },
+  { name: "whole 30" },
+];
 async function getDiets(req, res) {
-  let allDiets = [
-    "gluten free",
-    "ketogenic",
-    "vegetarian",
-    "lacto vegetarian",
-    "ovo vegetarian",
-    "vegan",
-    "pescetarian",
-    "paleo",
-    "primal",
-    "low fodmap",
-    "whole 30",
-  ];
   try {
-    for (let i = 0; i < allDiets.length; i++) {
-      await Diet.findOrCreate({
-        where: { name: allDiets[i] },
-        defaults: {
-          name: allDiets[i],
-        },
-      });
+    const response = await Diet.findAll();
+    if (response.length > 0) return res.json(response);
+    else {
+      try {
+        const dietDb = await Diet.bulkCreate(allDiets);
+        return res.json(dietDb);
+      } catch (err) {
+        console.log(err);
+      }
     }
-    res.status(201).json(allDiets);
   } catch (err) {
-    es.status(404).json({ message: error.message });
+    console.log(err);
   }
 }
-
 module.exports = {
   getAllRecipes,
   getRecipeById,
