@@ -1,5 +1,6 @@
 require("dotenv").config();
 const axios = require("axios");
+const { v4: uuidv4 } = require("uuid");
 const { Diet, Recipe } = require("../db");
 const { API_KEY } = process.env;
 
@@ -90,7 +91,6 @@ const createRecipe = async (req, res) => {
         summary,
         steps,
         healthScore,
-        diet,
       },
       {
         include: { model: Diet },
@@ -112,11 +112,10 @@ const createRecipe = async (req, res) => {
     res.status(404).json({ message: error.message });
   }
 };
-
 //-----------------------------------------------------------------------------------------------------------------------
 
-const getDiets = (req, res) => {
-  const apiDiets = [
+async function getDiets(req, res) {
+  let allDiets = [
     "gluten free",
     "ketogenic",
     "vegetarian",
@@ -129,10 +128,20 @@ const getDiets = (req, res) => {
     "low fodmap",
     "whole 30",
   ];
-  apiDiets.map(async (d) => await Diet.create({ name: d }));
-
-  res.status(201).json("Dieta agregada con éxito!");
-};
+  try {
+    for (let i = 0; i < allDiets.length; i++) {
+      await Diet.findOrCreate({
+        where: { name: allDiets[i] },
+        defaults: {
+          name: allDiets[i],
+        },
+      });
+    }
+    res.status(201).json(allDiets);
+  } catch (err) {
+    es.status(404).json({ message: error.message });
+  }
+}
 
 module.exports = {
   getAllRecipes,
