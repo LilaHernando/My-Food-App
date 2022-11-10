@@ -6,13 +6,13 @@ const { Diet, Recipe, Recipe_Diet } = require("../db");
 const { API_KEY } = process.env;
 
 async function createRecipe(req, res) {
-  let { name, summary, diets, healthScore, image, steps } = req.body;
+  let { name, summary, diets, healthiness, image, steps } = req.body;
 
   let recipeCreated = await Recipe.create({
     id: uuidv4(),
     name,
     summary,
-    healthScore,
+    healthiness,
     steps,
     image: image
       ? image
@@ -45,7 +45,7 @@ const getRecipeById = async (req, res) => {
         name: title,
         image: image,
         summary: summary.replace(/<[^>]*>?/g, ""),
-        healthScore: healthScore,
+        healthiness: healthScore,
         diets: diets,
       };
       res.json(apiData);
@@ -68,6 +68,7 @@ const getAllRecipes = async (req, res) => {
           name: r.title,
           image: r.image,
           diets: r.diets,
+          healthiness: r.healthScore,
         };
       });
       const dbData = await Recipe.findAll({
@@ -89,6 +90,7 @@ const getAllRecipes = async (req, res) => {
           name: r.title,
           image: r.image,
           diet: r.diets,
+          healthiness: r.healthScore,
         };
       });
       const dbData = await Recipe.findAll({

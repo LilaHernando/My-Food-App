@@ -1,13 +1,18 @@
-import React from "react";
-//import { useDispatch } from "react-redux";
+import { React, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { getDiets, postRecipe } from "../../actions/index";
 
 export default function CreateRecipe() {
-  //const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const diets = useSelector((state) => state.diets);
   const [input, setInput] = React.useState({
     name: "",
     summary: "",
-    healthScore: "",
+    healthiness: "",
     steps: "",
+    diets: [],
     image: "",
   });
 
@@ -16,21 +21,34 @@ export default function CreateRecipe() {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
-    //e.preventDefault();
-    // dispatch();
-    //actions.createRecipe(input)
-  };
+  function handleSubmit(e) {
+    e.preventDefault();
+    dispatch(postRecipe(input));
+    alert("RECIPE CREATED");
+    setInput({
+      name: "",
+      summary: "",
+      healthiness: "",
+      image: "",
+      steps: "",
+      diets: [],
+    });
+    history.push("/home");
+  }
+
+  useEffect(() => {
+    dispatch(getDiets());
+  }, []);
 
   return (
     <div>
       <div>Create your own recipe!</div>
       <br />
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={(e) => handleSubmit(e)}>
         <div>
           <label>Name</label>
           <input
-            type={"text"}
+            type="text"
             name="name"
             value={input.name}
             onChange={handleChange}
@@ -40,7 +58,7 @@ export default function CreateRecipe() {
         <div>
           <label>Summary</label>
           <input
-            type={"text"}
+            type="text"
             name="summary"
             value={input.summary}
             onChange={handleChange}
@@ -52,8 +70,8 @@ export default function CreateRecipe() {
           <input
             max={10}
             min={1} //controlado con js?
-            type={"number"}
-            name="healthScore"
+            type="number"
+            name="healthiness"
             value={input.healthScore}
             onChange={handleChange}
           />
@@ -62,7 +80,7 @@ export default function CreateRecipe() {
         <div>
           <label>Steps</label>
           <input
-            type={"text"}
+            type="text"
             name="steps"
             value={input.steps}
             onChange={handleChange}
@@ -71,7 +89,7 @@ export default function CreateRecipe() {
         <div>
           <label>Image</label>
           <input
-            type={"url"}
+            type="url"
             name="image"
             value={input.image}
             onChange={handleChange}
@@ -119,7 +137,12 @@ export default function CreateRecipe() {
         <br />
 
         <div>
-          <button type={"submit"}>Let's create it!</button>
+          <button type="submit">Let's create it!</button>
+        </div>
+        <div>
+          {input.title && input.summary ? (
+            <button type="submit">CREATE</button>
+          ) : null}
         </div>
       </form>
     </div>

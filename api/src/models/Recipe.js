@@ -19,8 +19,8 @@ module.exports = (sequelize) => {
         type: DataTypes.TEXT,
         allowNull: false,
       },
-      healthScore: {
-        type: DataTypes.FLOAT,
+      healthiness: {
+        type: DataTypes.INTEGER,
       },
       steps: {
         type: DataTypes.ARRAY(DataTypes.STRING),
