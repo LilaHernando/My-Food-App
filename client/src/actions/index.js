@@ -78,13 +78,10 @@ export function getRecipeByTitle(name) {
 export function getDetails(id) {
   return async function (dispatch) {
     try {
-      const detail = await axios.get(`http://localhost:3001/recipes/${id}`);
-      return dispatch({
-        type: GET_DETAILS,
-        payload: detail.data,
-      });
-    } catch (error) {
-      console.log("error");
+      const details = await axios(`http://localhost:3001/recipes/${id}`);
+      return dispatch({ type: GET_DETAILS, payload: details.data });
+    } catch (e) {
+      console.log(e);
     }
   };
 }

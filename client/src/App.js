@@ -6,16 +6,17 @@ import RecipeDetail from "./components/RecipeDetail/index";
 import Home from "./components/Home/index";
 import RecipeSearch from "./components/Search/index";
 import CreateRecipe from "./components/CreateRecipe/index";
+import Landing from "./components/Landing";
 
 function App() {
   return (
     <React.Fragment>
       <Switch>
-        {/* <Route path={"/"} component={} /> */}
-        <Route path="/home" exact component={Home} />
-        <Route path="/home" exact component={RecipeSearch} />
-        <Route path={"/:id"} exact component={RecipeDetail} />
-        <Route path={"/"} exact component={CreateRecipe} />
+        <Route exact path={"/create"} component={CreateRecipe} />
+        <Route exact path={"/"} component={Landing} />
+        <Route exact path="/home" component={Home} />
+        <Route exact path="/home" component={RecipeSearch} />
+        <Route exact path={"/:id"} component={RecipeDetail} />
       </Switch>
     </React.Fragment>
   );

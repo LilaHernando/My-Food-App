@@ -1,8 +1,7 @@
 require("dotenv").config();
-
 const axios = require("axios");
 const { v4: uuidv4 } = require("uuid");
-const { Diet, Recipe, Recipe_Diet } = require("../db");
+const { Diet, Recipe } = require("../db");
 const { API_KEY } = process.env;
 
 async function createRecipe(req, res) {
@@ -18,11 +17,11 @@ async function createRecipe(req, res) {
       ? image
       : "https://d320djwtwnl5uo.cloudfront.net/recetas/cover/lengu_ZD3bVmkQ8iTdnfGLw41PSOheWt0sHB.png",
   });
-  let typeDietDb = await Diet.findAll({
+  let dbDiets = await Diet.findAll({
     where: { name: diets },
   });
 
-  recipeCreated.addDiet(typeDietDb);
+  recipeCreated.addDiet(dbDiets);
   res.send("type of diet created!");
 }
 //------------------------------------------------------------------------------------------------------------
@@ -69,6 +68,10 @@ const getAllRecipes = async (req, res) => {
           image: r.image,
           diets: r.diets,
           healthiness: r.healthScore,
+          steps: r.analyzedInstructions
+            .map((e) => e.steps.map((s) => s.step))
+            .flat(2)
+            .join(""),
         };
       });
       const dbData = await Recipe.findAll({
@@ -91,6 +94,10 @@ const getAllRecipes = async (req, res) => {
           image: r.image,
           diet: r.diets,
           healthiness: r.healthScore,
+          steps: r.analyzedInstructions
+            .map((e) => e.steps.map((s) => s.step))
+            .flat(2)
+            .join(""),
         };
       });
       const dbData = await Recipe.findAll({

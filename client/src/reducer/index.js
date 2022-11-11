@@ -10,10 +10,10 @@ import {
 } from "../actions/const";
 
 const initialState = {
+  detalle: [],
   allRecipes: [],
   loadRecipe: [],
   types: [],
-  detail: [],
 };
 
 export default function reducer(state = initialState, action) {
@@ -116,7 +116,7 @@ export default function reducer(state = initialState, action) {
     case GET_DETAILS:
       return {
         ...state,
-        detail: action.payload,
+        detalle: action.payload,
       };
 
     case POST_RECIPE:

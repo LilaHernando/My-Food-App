@@ -4,11 +4,11 @@ const {
   getRecipeById,
   createRecipe,
   getDiets,
-} = require("../controllers/controllers.js");
+} = require("../controllers/controllers");
 
 //const { getAllRecipes,} = require("../controllers/Recipe")
 // Importar todos los routers;
-// Ejemplo: const authRouter = require('./auth.js');
+// Ejemplo: const {Router} = require('express');
 
 const router = Router();
 

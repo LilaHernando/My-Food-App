@@ -1,13 +1,13 @@
 import { React, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { getDiets, postRecipe } from "../../actions/index";
 
 export default function CreateRecipe() {
   const dispatch = useDispatch();
   const history = useHistory();
   const diets = useSelector((state) => state.diets);
-  const [input, setInput] = React.useState({
+  const [input, setInput] = useState({
     name: "",
     summary: "",
     healthiness: "",
@@ -44,6 +44,9 @@ export default function CreateRecipe() {
     <div>
       <div>Create your own recipe!</div>
       <br />
+      <Link to="/home">
+        <button>go back</button>
+      </Link>
       <form onSubmit={(e) => handleSubmit(e)}>
         <div>
           <label>Name</label>

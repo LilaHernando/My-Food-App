@@ -8,15 +8,16 @@ import {
   sortByScore,
   orderByTitle,
 } from "../../actions/index";
-import RecipeCard from "../RecipeCard/RecipeCard";
-import Paginado from "../Paginado/Paginado";
-import RecipeSearch from "../Search";
+import RecipeCard from "../RecipeCard/index";
+import Paginado from "../Paginado/index";
+import RecipeSearch from "../Search/index";
+//import CreateRecipe from "../CreateRecipe/index";
+
+//--------------------------------------------------------------
 
 export default function Home() {
   const dispatch = useDispatch();
   const allRecipes = useSelector((state) => state.loadRecipe);
-
-  //--------------------------------------------------------------
   const [currentPage, setCurrentPage] = useState(1);
   const [recipesPerPage] = useState(9);
   const [order, setOrder] = useState("");
@@ -26,8 +27,6 @@ export default function Home() {
   const paginado = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
-
-  console.log(currentRecipes);
 
   useEffect(() => {
     dispatch(getRecipes());
@@ -55,9 +54,10 @@ export default function Home() {
   return (
     <>
       <div>
-        <Link to="/">
+        <Link to="/create">
           <button>Create your own recipe</button>
         </Link>
+        {/* <CreateRecipe /> */}
       </div>
 
       <div>
