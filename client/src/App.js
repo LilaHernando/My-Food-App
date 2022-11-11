@@ -5,14 +5,14 @@ import { Route, Switch } from "react-router-dom";
 import RecipeDetail from "./components/RecipeDetail/index";
 import Home from "./components/Home/index";
 import RecipeSearch from "./components/Search/index";
-import CreateRecipe from "./components/CreateRecipe/index";
+import PostRecipe from "./components/PostRecipe/index";
 import Landing from "./components/Landing";
 
 function App() {
   return (
     <React.Fragment>
       <Switch>
-        <Route exact path={"/create"} component={CreateRecipe} />
+        <Route exact path={"/create"} component={PostRecipe} />
         <Route exact path={"/"} component={Landing} />
         <Route exact path="/home" component={Home} />
         <Route exact path="/home" component={RecipeSearch} />

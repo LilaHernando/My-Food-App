@@ -15,7 +15,7 @@ async function createRecipe(req, res) {
     steps,
     image: image
       ? image
-      : "https://d320djwtwnl5uo.cloudfront.net/recetas/cover/lengu_ZD3bVmkQ8iTdnfGLw41PSOheWt0sHB.png",
+      : "https://s1.eestatic.com/2015/01/12/cocinillas/cocinillas_2759834_116018444_1024x1024.jpg",
   });
   let dbDiets = await Diet.findAll({
     where: { name: diets },
@@ -29,16 +29,28 @@ const getRecipeById = async (req, res) => {
   try {
     const { id } = req.params;
     if (id.includes("-")) {
-      const dbData = await Recipe.findOne({
-        where: { id },
-        include: Diet,
+      const dbData = await Recipe.findByPk(id, {
+        include: {
+          model: Diet,
+          attributes: ["name"],
+          through: {
+            attributes: [],
+          },
+        },
       });
-      res.json(dbData);
+      return res.json(dbData);
     } else {
       let apiData = await axios.get(
         `https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY}`
       );
-      const { title, image, summary, healthScore, diets } = apiData.data;
+      const {
+        title,
+        image,
+        summary,
+        healthScore,
+        diets,
+        analyzedInstructions,
+      } = apiData.data;
 
       apiData = {
         name: title,
@@ -46,6 +58,10 @@ const getRecipeById = async (req, res) => {
         summary: summary.replace(/<[^>]*>?/g, ""),
         healthiness: healthScore,
         diets: diets,
+        steps: analyzedInstructions
+          .map((e) => e.steps.map((s) => s.step))
+          .flat(2)
+          .join(""),
       };
       res.json(apiData);
     }
@@ -66,7 +82,7 @@ const getAllRecipes = async (req, res) => {
           id: r.id,
           name: r.title,
           image: r.image,
-          diets: r.diets,
+          diet: r.diets,
           healthiness: r.healthScore,
           steps: r.analyzedInstructions
             .map((e) => e.steps.map((s) => s.step))
@@ -75,8 +91,13 @@ const getAllRecipes = async (req, res) => {
         };
       });
       const dbData = await Recipe.findAll({
-        where: { name },
-        include: Diet,
+        include: {
+          model: Diet,
+          attributes: ["name"],
+          through: {
+            attributes: [],
+          },
+        },
       });
       const allData = dbData.concat(apiData);
       if (allData.length === 0) {
@@ -101,7 +122,14 @@ const getAllRecipes = async (req, res) => {
         };
       });
       const dbData = await Recipe.findAll({
-        include: Diet,
+        //include: [Diet],
+        include: {
+          model: Diet,
+          attributes: ["name"],
+          through: {
+            attributes: [],
+          },
+        },
       });
       const allData = dbData.concat(apiData);
       res.status(200).json(allData);

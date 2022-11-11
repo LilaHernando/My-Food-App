@@ -5,18 +5,18 @@ export default function RecipeCard({ name, diets, image, id }) {
   return (
     <div>
       <div>
-        <img src={image} />
-        <div>
-          <Link to={`/${id}`}>
-            <h2>{name}</h2>
-          </Link>
+        <Link to={`/${id}`}>
+          <img src={image} />
           <div>
+            <h2>{name}</h2>
             <div>
-              <strong>Diets : </strong>
-              <p>{diets + " "}</p>
+              <div>
+                <strong>Diet: </strong>
+                <p>{diets + " "}</p>
+              </div>
             </div>
           </div>
-        </div>
+        </Link>
       </div>
     </div>
   );

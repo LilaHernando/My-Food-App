@@ -11,7 +11,6 @@ import {
 import RecipeCard from "../RecipeCard/index";
 import Paginado from "../Paginado/index";
 import RecipeSearch from "../Search/index";
-//import CreateRecipe from "../CreateRecipe/index";
 
 //--------------------------------------------------------------
 
@@ -20,7 +19,7 @@ export default function Home() {
   const allRecipes = useSelector((state) => state.loadRecipe);
   const [currentPage, setCurrentPage] = useState(1);
   const [recipesPerPage] = useState(9);
-  const [order, setOrder] = useState("");
+  const [order, setOrder] = useState(""); //??
   const lastRecipe = currentPage * recipesPerPage;
   const firstRecipe = lastRecipe - recipesPerPage;
   const currentRecipes = allRecipes?.slice(firstRecipe, lastRecipe);
@@ -130,7 +129,7 @@ export default function Home() {
                     id={recipe.id}
                     name={recipe.name}
                     image={recipe.image}
-                    diets={recipe.diets}
+                    diets={recipe.diet}
                   />
                 </div>
               );

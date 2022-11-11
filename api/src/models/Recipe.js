@@ -4,7 +4,7 @@ const { DataTypes } = require("sequelize");
 module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define(
-    "recipe",
+    "Recipe",
     {
       id: {
         type: DataTypes.UUID,
@@ -23,7 +23,7 @@ module.exports = (sequelize) => {
         type: DataTypes.INTEGER,
       },
       steps: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
+        type: DataTypes.TEXT,
       },
       image: {
         type: DataTypes.STRING,

@@ -10,26 +10,29 @@ import {
 } from "../actions/const";
 
 const initialState = {
-  detalle: [],
-  allRecipes: [],
   loadRecipe: [],
+  allRecipes: [],
+  detail: "",
   types: [],
 };
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
+    //--------------------------------------------------------------------------------
     case GET_RECIPES:
       return {
         ...state,
         allRecipes: action.payload,
         loadRecipe: action.payload,
       };
+    //--------------------------------------------------------------------------------
     case GET_DIETS: {
       return {
         ...state,
-        allDiets: action.payload,
+        types: action.payload,
       };
     }
+    //--------------------------------------------------------------------------------
     case FILTER_RECIPE_BY_DIET:
       const allRecipes = state.allRecipes;
       const typeApi = []; //api---> aca tengo guardados los tipos de dieta dela api
@@ -56,6 +59,8 @@ export default function reducer(state = initialState, action) {
           loadRecipe: allTypes,
         };
       }
+    //--------------------------------------------------------------------------------
+
     case SORT_BY_SCORE:
       let sortedRecipesScore =
         action.payload === "punAsc"
@@ -83,6 +88,9 @@ export default function reducer(state = initialState, action) {
         ...state,
         loadRecipe: sortedRecipesScore,
       };
+
+    //--------------------------------------------------------------------------------
+
     case ORDER_BY_TITLE:
       let orderTitle =
         action.payload === "asc"
@@ -108,16 +116,23 @@ export default function reducer(state = initialState, action) {
         ...state,
         loadRecipe: orderTitle,
       };
+
+    //--------------------------------------------------------------------------------
+
     case GET_RECIPE_BY_TITLE:
       return {
         ...state,
         loadRecipe: action.payload,
       };
+
+    //--------------------------------------------------------------------------------
     case GET_DETAILS:
       return {
         ...state,
-        detalle: action.payload,
+        detail: action.payload,
       };
+
+    //--------------------------------------------------------------------------------
 
     case POST_RECIPE:
       return {
