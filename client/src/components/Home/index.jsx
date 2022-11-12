@@ -50,13 +50,14 @@ export default function Home() {
     setOrder(`ordered ${e.target.value}`);
   }
 
+  console.log("EEE", currentRecipes);
+
   return (
     <>
       <div>
         <Link to="/create">
           <button>Create your own recipe</button>
         </Link>
-        {/* <CreateRecipe /> */}
       </div>
 
       <div>
@@ -64,17 +65,6 @@ export default function Home() {
       </div>
       <div>
         <RecipeSearch />
-      </div>
-      <div>
-        {/* <div>
-          <button
-            onClick={(e) => {
-              handleOnClickGet(e);
-            }}
-          >
-            All recipes
-          </button>
-        </div> */}
       </div>
       <div>
         <select
@@ -129,7 +119,7 @@ export default function Home() {
                     id={recipe.id}
                     name={recipe.name}
                     image={recipe.image}
-                    diets={recipe.diet}
+                    diets={recipe.diets}
                   />
                 </div>
               );

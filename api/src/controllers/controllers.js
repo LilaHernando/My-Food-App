@@ -82,7 +82,7 @@ const getAllRecipes = async (req, res) => {
           id: r.id,
           name: r.title,
           image: r.image,
-          diet: r.diets,
+          diets: r.diets,
           healthiness: r.healthScore,
           steps: r.analyzedInstructions
             .map((e) => e.steps.map((s) => s.step))
@@ -113,7 +113,7 @@ const getAllRecipes = async (req, res) => {
           id: r.id,
           name: r.title,
           image: r.image,
-          diet: r.diets,
+          diets: r.diets,
           healthiness: r.healthScore,
           steps: r.analyzedInstructions
             .map((e) => e.steps.map((s) => s.step))

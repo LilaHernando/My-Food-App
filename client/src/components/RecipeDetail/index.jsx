@@ -31,7 +31,7 @@ export default function RecipeDetail() {
       <br />
 
       <span>Type of Diets :</span>
-      <span>{recipeDetail.Diets && recipeDetail.Diets.map((e) => e.name)}</span>
+      <span>{recipeDetail.diets && recipeDetail.diets.map((e) => e.name)}</span>
       <br />
 
       <span>Step by step : </span>
