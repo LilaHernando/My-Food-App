@@ -91,6 +91,9 @@ const getAllRecipes = async (req, res) => {
         };
       });
       const dbData = await Recipe.findAll({
+        where: {
+          name: name,
+        },
         include: {
           model: Diet,
           attributes: ["name"],
@@ -122,7 +125,6 @@ const getAllRecipes = async (req, res) => {
         };
       });
       const dbData = await Recipe.findAll({
-        //include: [Diet],
         include: {
           model: Diet,
           attributes: ["name"],

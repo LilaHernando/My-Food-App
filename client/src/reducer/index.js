@@ -38,15 +38,15 @@ export default function reducer(state = initialState, action) {
       const typeApi = []; //api---> aca tengo guardados los tipos de dieta dela api
       const types = []; // db---> aca tengo guardados los tipos de dieta dela bd
       allRecipes.forEach((e) => {
-        if (e.hasOwnProperty("diet") && e.diet.includes(action.payload)) {
+        if (e.hasOwnProperty("diets") && e.diets.includes(action.payload)) {
           typeApi.push(e);
         }
       });
 
       allRecipes.forEach((e) => {
         if (
-          e.hasOwnProperty("diet") &&
-          e.diet.map((t) => t.name === action.payload)
+          e.hasOwnProperty("diets") &&
+          e.diets.map((t) => t.name === action.payload)
         ) {
           types.push(e);
         }

@@ -70,7 +70,7 @@ export function getRecipeByTitle(name) {
       });
     } catch (error) {
       alert("does not exist");
-      console.log("error");
+      console.log(error);
     }
   };
 }
