@@ -7,6 +7,7 @@ import Home from "./components/Home/index";
 import RecipeSearch from "./components/Search/index";
 import PostRecipe from "./components/PostRecipe/index";
 import Landing from "./components/Landing";
+import "./reset.css";
 
 function App() {
   return (

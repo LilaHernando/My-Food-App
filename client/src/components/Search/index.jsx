@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getRecipeByTitle } from "../../actions/index";
+import s from "./search.module.css";
 
 export default function RecipeSearch() {
   const dispatch = useDispatch();
@@ -17,11 +18,11 @@ export default function RecipeSearch() {
     setName("");
   }
 
-  console.log(name);
   return (
     <div>
-      <form>
+      <form className={s.formWrapper}>
         <input
+          className={s.searchInput}
           type="text"
           id="name"
           autoComplete="off"
@@ -29,10 +30,14 @@ export default function RecipeSearch() {
           value={name}
           onChange={(e) => handleChange(e)}
         />
+        <button
+          className={s.searchButton}
+          type="submit"
+          onClick={(e) => handleSubmit(e)}
+        >
+          Search
+        </button>
       </form>
-      <button type="submit" onClick={(e) => handleSubmit(e)}>
-        Search
-      </button>
     </div>
   );
 }

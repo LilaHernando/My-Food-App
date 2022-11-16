@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import s from "./recipecard.module.css";
 
 export default function RecipeCard({ name, diets, image, id }) {
   const checkedDiets = [];
@@ -16,16 +17,13 @@ export default function RecipeCard({ name, diets, image, id }) {
 
   return (
     <div>
-      <div>
+      <div className={s.cardContainer}>
         <Link to={`/${id}`}>
-          <img src={image} />
-          <div>
-            <h2>{name}</h2>
-            <div>
-              <div>
-                <strong>Diet: </strong>
-                <p>{checkedDiets}</p>
-              </div>
+          <img className={s.recipeImg} src={image} />
+          <div className={s.infoContainer}>
+            <h2 className={s.recipeName}>{name}</h2>
+            <div className={s.dietTypeContainer}>
+              <p className={s.dietType}>{checkedDiets}</p>
             </div>
           </div>
         </Link>
