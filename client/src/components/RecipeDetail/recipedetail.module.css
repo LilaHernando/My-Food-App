@@ -60,7 +60,7 @@
 }
 
 .recipeImg {
-  border-radius: 1rem;
+  border-radius: 1.5rem;
 }
 
 .summaryContainer {
@@ -78,25 +78,30 @@
 }
 
 .backButton {
-  background: white;
-  border: solid rgba(24, 188, 102, 1);
+  flex-direction: row;
+  margin-bottom: 1.5rem;
+  background-color: #fafcfe;
+  padding: 0.7rem 1.5rem;
+  border: 0.15rem solid rgba(24, 188, 102, 1);
   border-radius: 1.2rem;
   color: rgba(24, 188, 102, 1);
-  padding: 1rem 1.5rem;
-  font-size: 1rem;
   font-family: "Outfit", sans-serif;
-  font-weight: 700;
-  justify-content: center;
+  font-weight: 600;
+  font-size: 1rem;
 }
 
 .backButton:hover {
-  background: rgba(24, 188, 102, 1);
-  border: solid rgba(24, 188, 102, 1);
-  border-radius: 1.2rem;
-  color: white;
-  padding: 1rem 1.5rem;
-  font-size: 1rem;
+  flex-direction: row;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(
+    133deg,
+    rgba(24, 188, 102, 1) 0%,
+    rgba(98, 191, 110, 1) 100%
+  );
+  padding: 0.7rem 1.5rem;
+  color: #fafcfe;
+  transition: 0.5s;
   font-family: "Outfit", sans-serif;
-  font-weight: 700;
-  justify-content: center;
+  font-weight: 600;
+  font-size: 1rem;
 }

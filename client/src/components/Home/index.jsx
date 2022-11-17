@@ -77,7 +77,7 @@ export default function Home() {
                   handleFilterDiets(e);
                 }}
               >
-                <option value="all"> Filter by type of diet</option>
+                <option value="all"> by Diet</option>
                 <option value="gluten free">Gluten free</option>
                 <option value="ketogenic">ketogenic</option>
                 <option value="vegetarian">Vegetarian</option>

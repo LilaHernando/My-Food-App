@@ -1,41 +1,46 @@
 .cardContainer {
-    width: 300px;
-    border-radius: 1.5rem;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    margin-bottom: 3rem;
-    display: inline-block;
+  width: 300px;
+  border-radius: 1.5rem;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  margin-bottom: 3rem;
+  display: inline-block;
 }
 
 .cardContainer:hover {
-    box-shadow: rgba(64, 64, 67, 0.4) 0px 7px 29px 0px;
-    transition: 1s;
+  box-shadow: rgba(64, 64, 67, 0.406) 0px 7px 29px 0px;
+  transition: 0.4s;
+  width: 310px;
 }
 
 .cardContainer .recipeImg {
-    width: 100%;
-    border-radius: 1.5rem 1.5rem 0 0
+  width: 100%;
+  border-radius: 1.5rem 1.5rem 0 0;
 }
 
 .cardContainer .infoContainer {
-    padding: 1rem;
-    max-width: 100%;
-    height: auto;
+  padding: 1rem;
+  max-width: 100%;
+  height: auto;
 }
 
 .cardContainer .infoContainer .recipeName {
-    font-size: 1rem;
-    color: #0E0C11;
-    font-weight: 700;
-    margin-bottom: 1.2rem;
-    display: inline-block;
+  font-size: 1rem;
+  color: #0e0c11;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+  display: inline-block;
 }
 
 .infoContainer .dietTypeContainer .dietType {
-    color: #0E0C11;
-    display: inline-block;
-    font-weight: 600;
-    background: linear-gradient(133deg, rgba(24,188,102,1) 0%, rgba(98,191,110,1) 100%);
-    padding: 0.5rem 1rem;
-    border-radius: 2rem;
-    color: #fff;
+  color: #0e0c11;
+  display: inline-block;
+  font-weight: 600;
+  background: linear-gradient(
+    133deg,
+    rgba(24, 188, 102, 1) 0%,
+    rgba(98, 191, 110, 1) 100%
+  );
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  color: #fff;
 }

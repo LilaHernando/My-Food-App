@@ -1,16 +1,25 @@
 .buttonsContainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-top: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 2rem;
 }
 
 .pageButton {
-    border: none;
-    font-family: 'Outfit', sans-serif;
-    font-weight: 600;
-    font-size: 1rem;
-    color: #0E0C11;
-    background-color: #FAFCFE;
-    margin-right: 1rem;
+  border: none;
+  font-family: "Outfit", sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #0e0c11;
+  background-color: #fafcfe;
+  margin-right: 1rem;
+}
+
+.pageButton:hover {
+  border: none;
+  font-family: "Outfit", sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #0e0c115f;
+  background-color: #fafcfe;
 }

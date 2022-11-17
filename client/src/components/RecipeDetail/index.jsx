@@ -19,7 +19,7 @@ export default function RecipeDetail() {
 
   function verifyDiet(recipeDetail, id) {
     if (id.includes("-")) {
-      recipeDetail.diets.map((e) => checkedDiets.push(e.name + " "));
+      recipeDetail.diets?.map((e) => checkedDiets.push(e.name + " "));
     } else {
       recipeDetail.diets?.map((e) => checkedDiets.push(e + " "));
     }
