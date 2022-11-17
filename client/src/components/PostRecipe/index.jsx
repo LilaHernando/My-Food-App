@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { getDiets, postRecipe } from "../../actions/index";
-import styles from "./create.module.css";
+import { Link } from "react-router-dom";
+import s from "./create.module.css";
 
 export function validate(state) {
   let errors = {};
@@ -74,18 +75,21 @@ export default function PostRecipe() {
   }, []);
 
   return (
-    <div className={styles.mainWrapper}>
-      <div className={styles.blur}>
-        <section className={styles.contentWrapper}>
-          <h1 className={styles.title}>Let's create your own recipe!</h1>
-          <form
-            className={styles.formWrapper}
-            onSubmit={(e) => handleSubmit(e)}
-          >
-            <div className={styles.boxWrapper}>
-              <label className={styles.label}>name:</label>
+    <div className={s.mainWrapper}>
+      <div className={s.blur}>
+        <section className={s.contentWrapper}>
+          <div>
+            <Link to="/home">
+              <button className={s.backButton}>Home</button>
+            </Link>
+          </div>
+          <br />
+          <h1 className={s.title}>Let's create your own recipe!</h1>
+          <form className={s.formWrapper} onSubmit={(e) => handleSubmit(e)}>
+            <div className={s.boxWrapper}>
+              <label className={s.label}>name:</label>
               <input
-                className={styles.nameInput}
+                className={s.nameInput}
                 type="text"
                 name="name"
                 value={state.name}
@@ -94,10 +98,10 @@ export default function PostRecipe() {
               />
             </div>
             {errors.name && <h5 className="errorMessage">{errors.name}</h5>}
-            <div className={styles.boxWrapper}>
-              <label className={styles.label}>Summary</label>
+            <div className={s.boxWrapper}>
+              <label className={s.label}>Summary</label>
               <input
-                className={styles.nameInput}
+                className={s.nameInput}
                 type="text"
                 name="summary"
                 value={state.summary}
@@ -108,10 +112,10 @@ export default function PostRecipe() {
             {errors.summary && (
               <h5 className="errorMessage">{errors.summary}</h5>
             )}
-            <div className={styles.boxWrapper}>
-              <label className={styles.label}>HealthScore</label>
+            <div className={s.boxWrapper}>
+              <label className={s.label}>HealthScore</label>
               <input
-                className={styles.nameInput}
+                className={s.nameInput}
                 type="text"
                 name="healthiness"
                 value={state.healthiness}
@@ -122,10 +126,10 @@ export default function PostRecipe() {
             {errors.healthiness && (
               <h5 className="errorMessage">{errors.healthiness}</h5>
             )}
-            <div className={styles.boxWrapper}>
-              <label className={styles.label}>Image</label>
+            <div className={s.boxWrapper}>
+              <label className={s.label}>Image</label>
               <input
-                className={styles.nameInput}
+                className={s.nameInput}
                 type="url"
                 name="image"
                 value={state.image}
@@ -134,10 +138,10 @@ export default function PostRecipe() {
               />
             </div>
             {errors.image && <h5 className="errorMessage">{errors.image}</h5>}
-            <div className={styles.boxWrapper}>
-              <label className={styles.label}>Step by step</label>
+            <div className={s.boxWrapper}>
+              <label className={s.label}>Step by step</label>
               <input
-                className={styles.nameInput}
+                className={s.nameInput}
                 type="text"
                 name="steps"
                 value={state.steps}
@@ -146,8 +150,8 @@ export default function PostRecipe() {
               />
             </div>
             {errors.steps && <h5 className="errorMessage">{errors.steps}</h5>}
-            <div className={styles.boxWrapper}>
-              <label className={styles.label}>Type of diet</label>
+            <div className={s.boxWrapper}>
+              <label className={s.label}>Type of diet</label>
               {diets?.map((d) => {
                 return (
                   <span key={d.name}>
@@ -163,9 +167,9 @@ export default function PostRecipe() {
                 );
               })}
             </div>
-            <div className={styles.submitButtonWrapper}>
+            <div className={s.submitButtonWrapper}>
               {state.name && state.summary ? (
-                <button className={styles.submitButton} type="submit">
+                <button className={s.submitButton} type="submit">
                   Create recipe!
                 </button>
               ) : null}

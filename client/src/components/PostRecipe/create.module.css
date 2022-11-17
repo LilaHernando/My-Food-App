@@ -1,64 +1,64 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 .mainWrapper {
-    background-image: url(https://images.unsplash.com/photo-1600335895229-6e75511892c8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80);
-    background-size: 100%;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Outfit', sans-serif;
-    font-weight: 500;
+  background-image: url(https://images.unsplash.com/photo-1600335895229-6e75511892c8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80);
+  background-size: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Outfit", sans-serif;
+  font-weight: 500;
 }
 
 .blur {
   width: 100%;
   min-height: 100vh;
   background: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur( 7.5px );
-  -webkit-backdrop-filter: blur( 7.5px );
+  backdrop-filter: blur(7.5px);
+  -webkit-backdrop-filter: blur(7.5px);
   display: flex;
   align-items: center; /*alineado vertical*/
   justify-content: center; /*alineado horizontal*/
 }
 
 .contentWrapper {
-    margin-top: 100px;
-    margin-bottom: 100px;
-    display: flex;
-    background-color: #FAFCFE;
-    width: 100%;
-    max-width: 1000px;
-    min-height: 700px;
-    background-size: cover;
-    border-radius: 1rem;
-    flex-direction: column;
-    padding: 2rem;
-    position: relative;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  display: flex;
+  background-color: #fafcfe;
+  width: 100%;
+  max-width: 1000px;
+  min-height: 700px;
+  background-size: cover;
+  border-radius: 1rem;
+  flex-direction: column;
+  padding: 2rem;
+  position: relative;
 }
 
 .title {
   font-size: 1.5rem;
-  color: #0E0C11;
+  color: #0e0c11;
   font-weight: 700;
   margin-bottom: 2rem;
 }
 
 .formWrapper {
-  font-family: 'Outfit', sans-serif;
+  font-family: "Outfit", sans-serif;
   font-weight: 500;
 }
 
 .formWrapper .boxWrapper {
   display: flex;
-  color: #0E0C11;
+  color: #0e0c11;
   flex-direction: column;
   margin-bottom: 1.7rem;
 }
 
 .formWrapper .boxWrapper .label {
-  color: #0E0C11;
-  font-family: 'Outfit', sans-serif;
+  color: #0e0c11;
+  font-family: "Outfit", sans-serif;
   font-weight: 500;
   font-size: 1.2rem;
   margin-bottom: 0.8rem;
@@ -68,17 +68,17 @@
   border: none;
   padding: 0.8rem 1rem;
   border-radius: 2rem;
-  font-family: 'Outfit', sans-serif;
+  font-family: "Outfit", sans-serif;
   font-weight: 400;
-  color:#343434;
+  color: #343434;
   font-size: 1rem;
-  background-color: #F5F7FB;
+  background-color: #f5f7fb;
 }
 
 .formWrapper .boxWrapper .nameInput:focus {
   outline: none !important;
-  border:1px solid rgba(24,188,102,1);
-  box-shadow: 0 0 10px rgba(98,191,110,1);
+  border: 1px solid rgba(24, 188, 102, 1);
+  box-shadow: 0 0 10px rgba(98, 191, 110, 1);
 }
 
 h5 {
@@ -91,13 +91,40 @@ h5 {
 }
 
 .submitButton {
-  background: linear-gradient(133deg, rgba(24,188,102,1) 0%, rgba(98,191,110,1) 100%);
+  background: linear-gradient(
+    133deg,
+    rgba(24, 188, 102, 1) 0%,
+    rgba(98, 191, 110, 1) 100%
+  );
   border: none;
   border-radius: 1.2rem;
   color: #ffffff;
   padding: 1.5rem 3rem;
   font-size: 1rem;
-  font-family: 'Outfit', sans-serif;
+  font-family: "Outfit", sans-serif;
   font-weight: 700;
   justify-content: center;
+}
+
+.backButton {
+  background: white;
+  border: solid rgba(24, 188, 102, 1);
+  border-radius: 1.2rem;
+  color: rgba(24, 188, 102, 1);
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  font-family: "Outfit", sans-serif;
+  font-weight: 700;
+  justify-content: center;
+}
+
+.backButton:hover {
+  background: rgba(24, 188, 102, 1);
+  border: solid rgba(24, 188, 102, 1);
+  border-radius: 1.2rem;
+  color: white;
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  font-family: "Outfit", sans-serif;
+  font-weight: 700;
 }

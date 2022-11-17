@@ -24,6 +24,7 @@ export default function Home() {
   const lastRecipe = currentPage * recipesPerPage;
   const firstRecipe = lastRecipe - recipesPerPage;
   const currentRecipes = allRecipes?.slice(firstRecipe, lastRecipe);
+
   const paginado = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
@@ -104,8 +105,8 @@ export default function Home() {
                 <option hidden disabled selected value>
                   by HealthScore
                 </option>
-                <option value="punAsc">Heigher</option>
-                <option value="punDesc">Lower</option>
+                <option value="punAsc">Lower</option>
+                <option value="punDesc">Heigher</option>
               </select>
 
               <select className={s.filter} onChange={(e) => handleTitle(e)}>
@@ -142,6 +143,7 @@ export default function Home() {
               allRecipes={allRecipes.length}
               paginado={paginado}
             />
+            <div className={s.pageButton}>Current Page: {currentPage} / 12</div>
           </div>
         </section>
       </div>

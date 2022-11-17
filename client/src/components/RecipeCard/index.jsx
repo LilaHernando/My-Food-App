@@ -9,7 +9,7 @@ export default function RecipeCard({ name, diets, image, id }) {
     if (typeof diets[0] === "object") {
       diets.map((e) => checkedDiets.push(e.name + " "));
     } else {
-      diets.map((e) => checkedDiets.push(e));
+      diets.map((e) => checkedDiets.push(e + " "));
     }
   };
 

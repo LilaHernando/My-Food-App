@@ -12,7 +12,7 @@ export default function Landing() {
             Let's help you find the perfect recipe to fix a delicious dish!
           </h2>
           <Link to="/home">
-            <button className={s.button}>Get Started ➜</button>
+            <button className={s.button}>Get Started</button>
           </Link>
         </section>
       </div>

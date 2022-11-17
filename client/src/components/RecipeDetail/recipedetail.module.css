@@ -1,80 +1,102 @@
 .mainWrapper {
-    background-color: #ddd;
-    min-height: 100vh;
-    display: flex;
-    align-items: center; /*alineado vertical*/
-    justify-content: center; /*alineado horizontal*/
-    font-family: 'Outfit', sans-serif;
-    font-weight: 500;
+  background-color: #ddd;
+  min-height: 100vh;
+  display: flex;
+  align-items: center; /*alineado vertical*/
+  justify-content: center; /*alineado horizontal*/
+  font-family: "Outfit", sans-serif;
+  font-weight: 500;
 }
 
 .blur {
-    width: 100%;
-    min-height: 100vh;
-    background: rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur( 7.5px );
-    -webkit-backdrop-filter: blur( 7.5px );
-    display: flex;
-    align-items: center; /*alineado vertical*/
-    justify-content: center; /*alineado horizontal*/
+  width: 100%;
+  min-height: 100vh;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(7.5px);
+  -webkit-backdrop-filter: blur(7.5px);
+  display: flex;
+  align-items: center; /*alineado vertical*/
+  justify-content: center; /*alineado horizontal*/
 }
 
 .contentWrapper {
-    margin-top: 100px;
-    margin-bottom: 100px;
-    display: flex;
-    background-color: #FAFCFE;
-    width: 100%;
-    max-width: 1000px;
-    min-height: 700px;
-    background-size: cover;
-    border-radius: 1rem;
-    flex-direction: column;
-    padding: 2rem;
-    position: relative;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  display: flex;
+  background-color: #fafcfe;
+  width: 100%;
+  max-width: 1000px;
+  min-height: 700px;
+  background-size: cover;
+  border-radius: 1rem;
+  flex-direction: column;
+  padding: 2rem;
+  position: relative;
 }
 
 .title {
-    font-size: 1.5rem;
-    color: #0E0C11;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-    text-align: center;
+  font-size: 1.5rem;
+  color: #0e0c11;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-align: center;
 }
 
 .subtitle {
-    font-size: 1rem;
-    color: #0E0C11;
-    font-weight: 700;
-    margin-bottom: 1.2rem;
-    border-bottom: 3px solid rgba(24,188,102,1);
-    padding-bottom: 3px;
-    display: inline-block;
+  font-size: 1rem;
+  color: #0e0c11;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+  border-bottom: 3px solid rgba(24, 188, 102, 1);
+  padding-bottom: 3px;
+  display: inline-block;
 }
 
 .recipeImgContainer {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 2rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
 }
-
 
 .recipeImg {
-    border-radius: 1rem;
+  border-radius: 1rem;
 }
 
-
 .summaryContainer {
-    color:#5d5d5d;
-    font-weight: 400;
-    font-size: 0.8rem;
-    line-height: 1rem;
+  color: #5d5d5d;
+  font-weight: 400;
+  font-size: 0.8rem;
+  line-height: 1rem;
 }
 
 .stepsContainer {
-    color:#5d5d5d;
-    font-weight: 400;
-    font-size: 1rem;
-    line-height: 1.2rem;
+  color: #5d5d5d;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.2rem;
+}
+
+.backButton {
+  background: white;
+  border: solid rgba(24, 188, 102, 1);
+  border-radius: 1.2rem;
+  color: rgba(24, 188, 102, 1);
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  font-family: "Outfit", sans-serif;
+  font-weight: 700;
+  justify-content: center;
+}
+
+.backButton:hover {
+  background: rgba(24, 188, 102, 1);
+  border: solid rgba(24, 188, 102, 1);
+  border-radius: 1.2rem;
+  color: white;
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  font-family: "Outfit", sans-serif;
+  font-weight: 700;
+  justify-content: center;
 }

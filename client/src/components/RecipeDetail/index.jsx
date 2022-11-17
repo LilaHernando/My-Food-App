@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { getDetails } from "../../actions/index.js";
 import { useParams } from "react-router";
 import s from "./recipedetail.module.css";
+import { Link } from "react-router-dom";
 
 export default function RecipeDetail() {
   const dispatch = useDispatch();
@@ -15,11 +16,12 @@ export default function RecipeDetail() {
   }, [dispatch]);
 
   let checkedDiets = [];
+
   function verifyDiet(recipeDetail, id) {
     if (id.includes("-")) {
       recipeDetail.diets.map((e) => checkedDiets.push(e.name + " "));
     } else {
-      checkedDiets = recipeDetail.diets;
+      recipeDetail.diets?.map((e) => checkedDiets.push(e + " "));
     }
   }
   verifyDiet(recipeDetail, id);
@@ -28,6 +30,9 @@ export default function RecipeDetail() {
     <div className={s.mainWrapper}>
       <div className={s.blur}>
         <section className={s.contentWrapper}>
+          <Link to="/home">
+            <button className={s.backButton}>Home</button>
+          </Link>
           <h2 className={s.title}>{recipeDetail.name}</h2>
           <div className={s.recipeImgContainer}>
             <img className={s.recipeImg} src={recipeDetail.image} alt="" />

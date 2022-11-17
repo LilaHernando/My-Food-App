@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 .mainWrapper {
-    /* background-color: #ddd; */
+   
     min-height: 100vh;
     font-family: 'Outfit', sans-serif;
     font-weight: 500;
@@ -96,4 +96,14 @@
 .filters .cardsContainer .card {
     display: flex;
     flex-direction: row
+}
+
+.pageButton {
+    border: none;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    color:  rgba(24,188,102,1);
+    background-color: #FAFCFE;
+    margin-right: 1rem;
 }
